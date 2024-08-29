@@ -1,6 +1,6 @@
 {
   "name": "sp2-fed-noroff",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An auction site - Semester project 2 at Noroff FED",
   "main": "index.js",
   "scripts": {
@@ -49,15 +49,15 @@
     "prettier": "^3.3.3"
   },
   "lint-staged": {
-   "*.mjs": [
-    "prettier --write",
-    "eslint --fix"
-  ],
-  "*.html": [
-    "prettier --write"
-  ],
-  "*.scss": [
-    "prettier --write"
-  ]
+    "*.mjs": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }
