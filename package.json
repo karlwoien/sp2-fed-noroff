@@ -1,0 +1,32 @@
+{
+  "name": "sp2-fed-noroff",
+  "version": "0.0.1",
+  "description": "An auction site - Semester project 2 at Noroff FED",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlwoien/sp2-fed-noroff.git"
+  },
+  "keywords": [
+    "auction",
+    "bid",
+    "buy",
+    "sell",
+    "noroff",
+    "fed",
+    "sp2",
+    "js",
+    "bootstrap",
+    "scss",
+    "sass"
+  ],
+  "author": "Karl Erik Wøien <karwoi53055@stud.noroff.no>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karlwoien/sp2-fed-noroff/issues"
+  },
+  "homepage": "https://github.com/karlwoien/sp2-fed-noroff#readme"
+}
