@@ -4,7 +4,10 @@
   "description": "An auction site - Semester project 2 at Noroff FED",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "format": "prettier -w src/**/*.js",
+    "build": "sass src/scss:dist/css",
+    "start": "sass --watch src/scss:dist/css & live-server"
   },
   "repository": {
     "type": "git",
@@ -33,5 +36,8 @@
     "bootstrap": "^3.4.1",
     "live-server": "^1.2.2",
     "sass": "^1.77.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }
