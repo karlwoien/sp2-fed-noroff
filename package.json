@@ -7,7 +7,9 @@
     "test": "npm run test",
     "format": "prettier -w src/**/*.js",
     "build": "sass src/scss:dist/css",
-    "start": "sass --watch src/scss:dist/css & live-server"
+    "start": "sass --watch src/scss:dist/css & live-server",
+    "lint": "eslint src/**/*.mjs",
+    "lint-fix": "eslint src/**/*.mjs --cache --fix"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,9 @@
     "sass": "^1.77.8"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
     "prettier": "^3.3.3"
   }
 }
