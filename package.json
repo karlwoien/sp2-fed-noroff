@@ -9,7 +9,8 @@
     "build": "sass src/scss:dist/css",
     "start": "sass --watch src/scss:dist/css & live-server",
     "lint": "eslint src/**/*.mjs",
-    "lint-fix": "eslint src/**/*.mjs --cache --fix"
+    "lint-fix": "eslint src/**/*.mjs --cache --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,20 @@
     "@eslint/js": "^9.9.1",
     "eslint": "^9.9.1",
     "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
     "prettier": "^3.3.3"
+  },
+  "lint-staged": {
+   "*.mjs": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "*.html": [
+    "prettier --write"
+  ],
+  "*.scss": [
+    "prettier --write"
+  ]
   }
 }
