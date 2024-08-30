@@ -36,6 +36,10 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
+$air-force-blue: #153289; //Main brand color
+$cultured: #f6f4f1; //Background color
+$space-cadet: #273150; //Text color
+$dark-metal: #181d2c; //Paragraph text
 $blue: #0d6efd !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
@@ -298,7 +302,7 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary: $blue !default;
+$primary: $air-force-blue; //Custom color
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -310,7 +314,7 @@ $dark: $gray-900 !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
-  "primary": $primary,
+  "primary": $air-force-blue,
   "secondary": $secondary,
   "success": $success,
   "info": $info,
@@ -440,7 +444,7 @@ $position-values: (
 
 $body-text-align: null !default;
 $body-color: $gray-900 !default;
-$body-bg: $white !default;
+$body-bg: $cultured; //Custom color
 
 $body-secondary-color: rgba($body-color, 0.75) !default;
 $body-secondary-bg: $gray-200 !default;
@@ -455,7 +459,7 @@ $body-emphasis-color: $black !default;
 // Style anchor elements.
 
 $link-color: $primary !default;
-$link-decoration: underline !default;
+$link-decoration: none; //Custom
 $link-shade-percentage: 20% !default;
 $link-hover-color: shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration: null !default;
@@ -926,7 +930,7 @@ $input-padding-y-lg: $input-btn-padding-y-lg !default;
 $input-padding-x-lg: $input-btn-padding-x-lg !default;
 $input-font-size-lg: $input-btn-font-size-lg !default;
 
-$input-bg: var(--#{$prefix}body-bg) !default;
+$input-bg: $white; //Custom
 $input-disabled-color: null !default;
 $input-disabled-bg: var(--#{$prefix}secondary-bg) !default;
 $input-disabled-border-color: null !default;
@@ -1445,7 +1449,7 @@ $card-cap-bg: rgba(var(--#{$prefix}body-color-rgb), 0.03) !default;
 $card-cap-color: null !default;
 $card-height: null !default;
 $card-color: null !default;
-$card-bg: var(--#{$prefix}body-bg) !default;
+$card-bg: $white; //Custom
 $card-img-overlay-padding: $spacer !default;
 $card-group-margin: $grid-gutter-width * 0.5 !default;
 // scss-docs-end card-variables
