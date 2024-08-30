@@ -50,57 +50,60 @@
       </nav>
     </header>
     <!--Start of main-->
-    <div class="hero-section">
-      <div class="container">
-        <h1>
-          Join BidHaven Today <br />
-          and Get 1000 Credit <br />
-          Points for Free!
-        </h1>
-        <p>
-          Unlock your auction journey and discover treasures waiting to be won!
-        </p>
-        <a
-          role="button"
-          class="btn btn-primary"
-          href="/profile/signup/index.html"
-          >Join here</a
-        >
-      </div>
-    </div>
-    <div class="listing-section">
-      <div class="container">
-        <h1>Explore listings</h1>
-        <div class="filter-listings">
-          <nav class="navbar row rounded pt-3 pb-3 mb-2 bg-white">
-            <form class="col justify-content-end" role="search">
-              <input
-                class="form-control me-2 bg-white"
-                type="search"
-                placeholder="Search"
-                aria-label="Search listings"
-                name="searchInput"
-                id="searchInput"
-              />
-            </form>
-            <div class="col-4">
-              <select
-                class="form-select bg-white"
-                aria-label="Sort listings"
-                name="filter"
-                id="filter"
-              >
-                <option selected>Latest</option>
-                <option value="az">A-Z</option>
-                <option value="za">Z-A</option>
-              </select>
-            </div>
-          </nav>
-        </div>
-        <div class="listings">
-          <!--Listing items dynamic inserted here-->
+    <main>
+      <div class="hero-section" style="height: 500px">
+        <div class="container text-center">
+          <h1>
+            Join BidHaven Today <br />
+            and Get 1000 Credit <br />
+            Points for Free!
+          </h1>
+          <p>
+            Unlock your auction journey and discover treasures waiting to be
+            won!
+          </p>
+          <a
+            role="button"
+            class="btn btn-primary"
+            href="/profile/signup/index.html"
+            >Join here</a
+          >
         </div>
       </div>
-    </div>
+      <div class="listing-section">
+        <div class="container">
+          <h1 class="text-center">Explore listings</h1>
+          <div class="filter-listings">
+            <nav class="navbar row rounded pt-3 pb-3 mb-2 bg-white">
+              <form class="col justify-content-end" role="search">
+                <input
+                  class="form-control me-2 bg-white"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search listings"
+                  name="searchInput"
+                  id="searchInput"
+                />
+              </form>
+              <div class="col-4">
+                <select
+                  class="form-select bg-white"
+                  aria-label="Sort listings"
+                  name="filter"
+                  id="filter"
+                >
+                  <option selected>Latest</option>
+                  <option value="az">A-Z</option>
+                  <option value="za">Z-A</option>
+                </select>
+              </div>
+            </nav>
+          </div>
+          <div class="listings">
+            <!--Listing items dynamic inserted here-->
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
