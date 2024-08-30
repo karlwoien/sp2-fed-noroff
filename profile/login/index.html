@@ -50,10 +50,11 @@
       </nav>
     </header>
     <!--Start of main-->
-    <div class="container align-content-center">
-      <div class="col-4">
-        <div class="card">
-          <form id="login-form">
+    <div class="container">
+      <div class="col m-auto" style="width: 360px">
+        <div class="card mt-3">
+          <form id="login-form" class="m-4">
+            <h1 class="fs-5 text-center mb-4">Login to your account!</h1>
             <div class="mb-3 form-group">
               <label
                 for="emailinput"
@@ -73,7 +74,7 @@
                 for="password"
                 class="form-label"
                 aria-label="Input for password"
-                >Password:</label
+                >Password</label
               >
               <input
                 type="text"
@@ -82,11 +83,13 @@
                 placeholder=""
               />
             </div>
-            <p>
+            <p class="text-center mb-4">
               Not a member?
               <a href="/profile/signup/index.html">Sign up here!</a>
             </p>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="text-center mb-3">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
           </form>
         </div>
       </div>
