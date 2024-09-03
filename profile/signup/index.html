@@ -59,7 +59,7 @@
             <form id="register-form">
               <div class="mx-3 mb-3 form-group mt-4">
                 <label
-                  for="username"
+                  for="name"
                   class="form-label"
                   aria-label="Input for username"
                   >Username</label
@@ -67,13 +67,14 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="username"
-                  placeholder=""
+                  required
+                  name="name"
+                  placeholder="Name"
                 />
               </div>
               <div class="mx-3 mb-3 form-group">
                 <label
-                  for="emailinput"
+                  for="email"
                   class="form-label"
                   aria-label="Input for e-mail address"
                   >Email</label
@@ -81,8 +82,10 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="emailinput"
-                  placeholder=""
+                  name="email"
+                  pattern="^[^\s@]+@(stud.noroff.no)$"
+                  required
+                  placeholder="name@stud.noroff.no"
                 />
               </div>
               <div class="mx-3 mb-3 form-group">
@@ -95,8 +98,10 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="password"
-                  placeholder=""
+                  name="password"
+                  minlength="8"
+                  required
+                  placeholder="Password"
                 />
               </div>
               <div class="mx-3 mb-3 form-group">
@@ -107,9 +112,9 @@
                   >Avatar URL</label
                 >
                 <input
-                  type="text"
+                  type="url"
                   class="form-control"
-                  id="avatar"
+                  name="avatar"
                   placeholder=""
                 />
               </div>
