@@ -4,19 +4,18 @@ import { API_REGISTER } from "../constants.mjs";
 
 const method = "post";
 
-export async function register(profile) {
-  const registerUrl = API_BASE + API_AUTH + API_REGISTER;
-  const body = JSON.stringify(profile);
-
-  const response = await fetch(registerUrl, {
+export async function register(name, email, password) {
+  const response = await fetch(API_BASE + API_AUTH + API_REGISTER, {
     headers: {
       "Content-Type": "application/json",
     },
     method,
-    body,
+    body: JSON.stringify({ name, email, password }),
   });
 
-  const result = await response.json();
+  if (response.ok) {
+    return await response.json();
+  }
 
-  return result;
+  throw new Error("Could not register account");
 }

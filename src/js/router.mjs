@@ -1,4 +1,5 @@
-import { setRegisterFormListener } from "./handlers/register.mjs";
+import { setRegisterListener } from "./handlers/register.mjs";
+import { setLoginListener } from "./handlers/login.mjs";
 
 export function router() {
   switch (window.location.pathname) {
@@ -7,7 +8,11 @@ export function router() {
       break;
     case "/profile/signup/":
     case "/profile/signup/index.html":
-      setRegisterFormListener();
+      setRegisterListener();
+      break;
+    case "/profile/login":
+    case "/profile/login/index.html":
+      setLoginListener();
       break;
   }
 }
