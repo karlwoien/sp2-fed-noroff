@@ -1,27 +1,25 @@
 import { API_BASE } from "../constants.mjs";
 import { API_AUTH } from "../constants.mjs";
 import { API_LOGIN } from "../constants.mjs";
-import * as storage from "../../storage/index.mjs";
+import { save } from "../../storage/index.mjs";
 
 const method = "post";
 
-export async function login(profile) {
-  const loginUrl = API_BASE + API_AUTH + API_LOGIN;
-  const body = JSON.stringify(profile);
-
-  const response = await fetch(loginUrl, {
+export async function login(email, password) {
+  const response = await fetch(API_BASE + API_AUTH + API_LOGIN, {
     headers: {
       "Content-Type": "application/json",
     },
     method,
-    body,
+    body: JSON.stringify({ email, password }),
   });
 
-  const result = await response.json();
+  if (response.ok) {
+    const { accessToken, ...profile } = (await response.json()).data;
+    save("token", accessToken);
+    save("profile", profile);
+    return profile;
+  }
 
-  storage.save("token", result.accessToken);
-
-  storage.save("profile", result);
-
-  alert("You are now logged in!");
+  throw new Error("Could not login account");
 }

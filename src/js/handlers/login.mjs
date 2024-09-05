@@ -1,14 +1,13 @@
 import { login } from "../api/auth/login.mjs";
 
-export function setLoginFormListener() {
+export function setLoginListener() {
   const form = document.querySelector("#login-form");
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    const profile = Object.fromEntries(formData.entries());
+    const email = event.target.email.value;
+    const password = event.target.password.value;
 
-    login(profile);
+    login(email, password);
   });
 }
