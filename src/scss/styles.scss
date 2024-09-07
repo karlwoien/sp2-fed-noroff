@@ -1,3 +1,13 @@
+// Custom css
+.card {
+  @extend .shadow;
+}
+
+.profile-image {
+  width: 190px;
+  height: 190px;
+}
+
 // scss-docs-start import-stack
 // Configuration
 @import "../../node_modules/bootstrap/scss/functions";
