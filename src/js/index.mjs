@@ -1,3 +1,9 @@
 import { router } from "./router.mjs";
+import { renderNavItems } from "./components/nav.mjs";
+import { setupLogoutListener } from "./handlers/logout.mjs";
 
-router();
+document.addEventListener("DOMContentLoaded", () => {
+  router();
+  renderNavItems();
+  setupLogoutListener();
+});
