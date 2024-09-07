@@ -1,4 +1,7 @@
 // Custom css
+.card {
+  @extend .shadow;
+}
 
 .profile-image {
   width: 190px;
