@@ -31,13 +31,18 @@ export function listingTemplate(data) {
   title.classList.add("text-primary");
   infoContainer.appendChild(title);
 
-  const highestBid = document.createElement("p");
-  highestBid.textContent = `Highest bid: $${data._count.bids}`;
-  infoContainer.appendChild(highestBid);
-
   const seller = document.createElement("p");
-  seller.textContent = `Seller: ${data.seller ? data.seller.name : "Unknown"}`;
+  seller.textContent = `Listed by: ${data.seller ? data.seller.name : "Unknown"}`;
   infoContainer.appendChild(seller);
+
+  // Find the highest bid from the bids array
+  const highestBidAmount =
+    data.bids.length > 0 ? Math.max(...data.bids.map((bid) => bid.amount)) : 0;
+
+  // Display the highest bid
+  const highestBid = document.createElement("p");
+  highestBid.textContent = `Highest bid: $${highestBidAmount}`;
+  infoContainer.appendChild(highestBid);
 
   const countdown = document.createElement("p");
   infoContainer.appendChild(countdown);
@@ -80,10 +85,68 @@ export function listingTemplate(data) {
   listingElements.infoContainer = infoContainer;
 
   // Bid history section
-  const bidHistory = document.createElement("h5");
-  bidHistory.textContent = "Bid history";
-  bidHistory.classList.add("text-primary");
-  listingElements.bidHistory = bidHistory;
+  const bidHistoryContainer = document.createElement("div");
+
+  const bidHistoryTitle = document.createElement("h5");
+  bidHistoryTitle.textContent = "Bid history";
+  bidHistoryTitle.classList.add("text-primary");
+  bidHistoryContainer.appendChild(bidHistoryTitle);
+
+  // Row for titles (Bidder's name, Bid placed, Amount)
+  const bidTitlesRow = document.createElement("div");
+  bidTitlesRow.classList.add("row", "font-weight-bold", "mb-2");
+
+  const nameTitle = document.createElement("div");
+  nameTitle.classList.add("col-4");
+  nameTitle.textContent = "Bidder's name";
+
+  const dateTitle = document.createElement("div");
+  dateTitle.classList.add("col-4");
+  dateTitle.textContent = "Bid placed";
+
+  const amountTitle = document.createElement("div");
+  amountTitle.classList.add("col-4");
+  amountTitle.textContent = "Amount";
+
+  bidTitlesRow.appendChild(nameTitle);
+  bidTitlesRow.appendChild(dateTitle);
+  bidTitlesRow.appendChild(amountTitle);
+  bidHistoryContainer.appendChild(bidTitlesRow);
+
+  // Reverse the bids array to show the latest bids first
+  const bids = [...data.bids].reverse();
+
+  // Display each bid in a row
+  bids.forEach((bid) => {
+    const bidRow = document.createElement("div");
+    bidRow.classList.add("row", "mb-3");
+
+    // Bidder's name
+    const bidderName = document.createElement("div");
+    bidderName.classList.add("col-4");
+    bidderName.textContent = bid.bidder.name;
+
+    // Bid placed (format the date)
+    const bidDate = document.createElement("div");
+    bidDate.classList.add("col-4");
+    const bidPlacedDate = new Date(bid.created);
+    bidDate.textContent = bidPlacedDate.toLocaleDateString("en-GB");
+
+    // Amount
+    const bidAmount = document.createElement("div");
+    bidAmount.classList.add("col-4");
+    bidAmount.textContent = `$${bid.amount}`;
+
+    // Append to the bid row
+    bidRow.appendChild(bidderName);
+    bidRow.appendChild(bidDate);
+    bidRow.appendChild(bidAmount);
+
+    // Append bid row to the bid history container
+    bidHistoryContainer.appendChild(bidRow);
+  });
+
+  listingElements.bidHistory = bidHistoryContainer;
 
   return listingElements;
 }
