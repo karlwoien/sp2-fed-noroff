@@ -5,6 +5,10 @@ export function listingsTemplate(data) {
   const listingContainer = document.createElement("div");
   listingContainer.classList.add("col-lg-4", "col-md-6", "col-sm-12", "mb-4");
 
+  // Create anchor tag to wrap the card and make it clickable
+  const link = document.createElement("a");
+  link.href = `/listing/index.html?id=${data.id}`; // Redirect to single listing page with the listing ID
+
   // Card element
   const card = document.createElement("div");
   card.classList.add("card", "listing-card");
@@ -68,7 +72,12 @@ export function listingsTemplate(data) {
   cardBody.appendChild(countdown); // Append countdown below the title
   card.appendChild(image);
   card.appendChild(cardBody);
-  listingContainer.appendChild(card);
+
+  // Append the card to the anchor link (making the card clickable)
+  link.appendChild(card);
+
+  // Finally, append the link to the listing container
+  listingContainer.appendChild(link);
 
   return listingContainer;
 }
