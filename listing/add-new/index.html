@@ -58,7 +58,14 @@
             <label for="title" class="form-label" aria-label="Input for title"
               >Title</label
             >
-            <input type="text" class="form-control" id="title" placeholder="" />
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              placeholder=""
+              required
+            />
           </div>
           <div class="mb-3 form-group">
             <label
@@ -91,18 +98,6 @@
             />
           </div>
           <div class="mb-3 form-group">
-            <label for="tags" class="form-label" aria-label="Input for tags"
-              >Tags</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="tags"
-              name="tags"
-              placeholder=""
-            />
-          </div>
-          <div class="mb-3 form-group">
             <label
               for="deadline"
               class="form-label"
@@ -110,11 +105,12 @@
               >Deadline date</label
             >
             <input
-              type="text"
+              type="datetime-local"
               class="form-control"
-              id="tags"
-              name="tags"
+              id="deadline"
+              name="endsAt"
               placeholder=""
+              required
             />
           </div>
           <hr />
@@ -130,6 +126,7 @@
             </div>
           </div>
         </form>
+        <div id="form-message" class="alert d-none"></div>
       </div>
     </div>
   </body>
