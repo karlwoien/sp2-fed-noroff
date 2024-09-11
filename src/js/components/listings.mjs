@@ -52,6 +52,7 @@ export function listingsTemplate(data) {
       countdown.textContent = `Listing ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
     } else {
       countdown.textContent = "Listing has ended";
+      countdown.classList.add("text-danger");
       clearInterval(intervalId); // Stop the interval once the listing has ended
     }
   }

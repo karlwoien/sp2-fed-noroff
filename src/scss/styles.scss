@@ -5,6 +5,13 @@
   @extend .shadow;
 }
 
+.navbar-toggler {
+  .navbar-toggler-icon {
+    height: 20px;
+    width: 20px;
+  }
+}
+
 //Profile image
 .profile-image {
   width: 190px;
