@@ -1,6 +1,6 @@
 {
   "name": "sp2-fed-noroff",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "An auction site - Semester project 2 at Noroff FED",
   "main": "index.js",
   "scripts": {
