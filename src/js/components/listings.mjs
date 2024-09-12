@@ -42,7 +42,7 @@ export function listingsTemplate(data) {
 
   // Append elements to card body and card container
   cardBody.appendChild(title);
-  cardBody.appendChild(countdown); // Append countdown below the title
+  cardBody.appendChild(countdown);
   card.appendChild(image);
   card.appendChild(cardBody);
 
