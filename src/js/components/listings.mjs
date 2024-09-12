@@ -1,9 +1,15 @@
+import { createCountdown } from "./countdown.mjs";
+
 //Functionality to template out listings on home page
 
 export function listingsTemplate(data) {
   // Main div element for each card
   const listingContainer = document.createElement("div");
   listingContainer.classList.add("col-lg-4", "col-md-6", "col-sm-12", "mb-4");
+
+  // Create anchor tag to wrap the card and make it clickable
+  const link = document.createElement("a");
+  link.href = `/listing/index.html?id=${data.id}`; // Redirect to single listing page with the listing ID
 
   // Card element
   const card = document.createElement("div");
@@ -30,45 +36,21 @@ export function listingsTemplate(data) {
   title.classList.add("card-title");
   title.textContent = data.title;
 
-  // Countdown element / Listing ends
-  const countdown = document.createElement("p");
-
-  // Function to calculate and display the remaining time
-  function updateCountdown() {
-    const now = new Date();
-    const endsAt = new Date(data.endsAt);
-    const timeDifference = endsAt - now;
-
-    if (timeDifference > 0) {
-      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      const minutes = Math.floor(
-        (timeDifference % (1000 * 60 * 60)) / (1000 * 60),
-      );
-      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-      countdown.textContent = `Listing ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    } else {
-      countdown.textContent = "Listing has ended";
-      countdown.classList.add("text-danger");
-      clearInterval(intervalId); // Stop the interval once the listing has ended
-    }
-  }
-
-  // Update the countdown every second
-  const intervalId = setInterval(updateCountdown, 1000);
-
-  // Initial countdown update
-  updateCountdown();
+  // Display countdown until listing ends
+  const countdown = document.createElement("div");
+  createCountdown(data.endsAt, countdown);
 
   // Append elements to card body and card container
   cardBody.appendChild(title);
   cardBody.appendChild(countdown); // Append countdown below the title
   card.appendChild(image);
   card.appendChild(cardBody);
-  listingContainer.appendChild(card);
+
+  // Append the card to the anchor link (making the card clickable)
+  link.appendChild(card);
+
+  // Append the link to the listing container
+  listingContainer.appendChild(link);
 
   return listingContainer;
 }

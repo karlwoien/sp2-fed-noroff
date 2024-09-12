@@ -1,7 +1,7 @@
 import { setRegisterListener } from "./handlers/register.mjs";
 import { setLoginListener } from "./handlers/login.mjs";
 import { loadProfile } from "./pages/user/profile.mjs";
-import { loadListings } from "./pages/listings/listing.mjs";
+import { loadListings, loadListing } from "./pages/listings/listing.mjs";
 import { setAddListingFormListener } from "./handlers/listing.mjs";
 
 export function router() {
@@ -25,6 +25,10 @@ export function router() {
     case "/listing/add-new":
     case "/listing/add-new/index.html":
       setAddListingFormListener();
+      break;
+    case "/listing":
+    case "/listing/index.html":
+      loadListing();
       break;
   }
 }
