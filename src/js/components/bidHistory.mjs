@@ -40,7 +40,7 @@ export function createBidHistory(bids, container) {
     const bidDate = document.createElement("div");
     bidDate.classList.add("col-4");
     const bidPlacedDate = new Date(bid.created);
-    bidDate.textContent = bidPlacedDate.toLocaleDateString("en-GB");
+    bidDate.textContent = bidPlacedDate.toLocaleDateString();
 
     const bidAmount = document.createElement("div");
     bidAmount.classList.add("col-4");
