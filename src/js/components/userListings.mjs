@@ -1,6 +1,6 @@
-// userListings.mjs
-
 import { getUserListings } from "../api/profile/getUserListings.mjs";
+
+//Functionality to render listings added by the user
 
 export async function renderUserListings() {
   const listingsContainer = document.getElementById("user-listings");
@@ -10,7 +10,6 @@ export async function renderUserListings() {
     return;
   }
 
-  // Clear the container first
   listingsContainer.innerHTML = "";
 
   // Static elements that should appear at the top of the listings section
@@ -23,17 +22,16 @@ export async function renderUserListings() {
 
   const titleHeader = document.createElement("div");
   titleHeader.textContent = "Title";
-  titleHeader.classList.add("col"); // Use col class for consistent grid
+  titleHeader.classList.add("col");
 
   const descriptionHeader = document.createElement("div");
-  descriptionHeader.textContent = "Description";
+  descriptionHeader.textContent = "Created";
   descriptionHeader.classList.add("col");
 
   const statusHeader = document.createElement("div");
   statusHeader.textContent = "Status";
   statusHeader.classList.add("col");
 
-  // Append the static header elements to the container
   tableHeaderRow.appendChild(titleHeader);
   tableHeaderRow.appendChild(descriptionHeader);
   tableHeaderRow.appendChild(statusHeader);
@@ -44,7 +42,6 @@ export async function renderUserListings() {
     const listings = await getUserListings();
 
     if (listings.length === 0) {
-      // If no listings, add a message below the static elements
       const noListingsMessage = document.createElement("p");
       noListingsMessage.textContent = "No listings found.";
       listingsContainer.appendChild(noListingsMessage);
@@ -54,36 +51,35 @@ export async function renderUserListings() {
     // Dynamically render the listings
     listings.forEach((listing) => {
       const listingRow = document.createElement("div");
-      listingRow.classList.add("row", "mb-3", "p-2", "border", "rounded"); // Make sure it's using Bootstrap row
+      listingRow.classList.add("row", "mb-3", "p-2", "border", "rounded");
       listingRow.style.cursor = "pointer";
 
       // Title
       const title = document.createElement("div");
       title.textContent = listing.title;
-      title.classList.add("col"); // Ensure it aligns with the title header
+      title.classList.add("col");
 
-      // Description
-      const description = document.createElement("div");
-      description.textContent = listing.description;
-      description.classList.add("col"); // Ensure it aligns with the description header
+      // Date when listing were created
+      const createdDate = document.createElement("div");
+      const dateCreated = new Date(listing.created);
+      createdDate.textContent = dateCreated.toLocaleDateString();
+      createdDate.classList.add("col");
 
       // Status (active or inactive based on end date)
       const status = document.createElement("div");
       const isActive = new Date(listing.endsAt) > new Date();
       status.textContent = isActive ? "Active" : "Inactive";
-      status.classList.add(isActive ? "text-success" : "text-danger", "col"); // Ensure it aligns with the status header
+      status.classList.add(isActive ? "text-success" : "text-danger", "col");
 
       // Add click handler to go to listing page
       listingRow.addEventListener("click", () => {
         window.location.href = `/listing/index.html?id=${listing.id}`;
       });
 
-      // Append the elements to the row
       listingRow.appendChild(title);
-      listingRow.appendChild(description);
+      listingRow.appendChild(createdDate);
       listingRow.appendChild(status);
 
-      // Append the row to the container
       listingsContainer.appendChild(listingRow);
     });
   } catch (error) {
