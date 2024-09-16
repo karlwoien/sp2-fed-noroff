@@ -1,4 +1,5 @@
 import { getProfile } from "../api/profile/get.mjs";
+import { changeAvatarModal } from "../handlers/changeAvatar.mjs";
 
 //Template for profile info on the profile page. Username, avatar, and overview of numbers of credit, listings and wins
 
@@ -23,9 +24,8 @@ export async function profileInfo() {
   avatar.src = user.data.avatar.url;
   avatar.alt = user.data.name + "profile avatar";
 
-  const changeAvatar = document.createElement("button");
-  changeAvatar.classList.add("btn", "btn-primary", "mt-4");
-  changeAvatar.textContent = "Change avatar";
+  // Load the Change Avatar Button with Modal
+  const changeAvatarButton = await changeAvatarModal();
 
   //Section for overview of credits, listings, wins
 
@@ -70,7 +70,7 @@ export async function profileInfo() {
 
   userAvatarContainer.appendChild(userName);
   userAvatarContainer.appendChild(avatar);
-  userAvatarContainer.appendChild(changeAvatar);
+  userAvatarContainer.appendChild(changeAvatarButton);
 
   overviewContainer.appendChild(overviewHeader);
   overviewContainer.appendChild(creditContainer);
