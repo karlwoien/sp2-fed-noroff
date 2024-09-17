@@ -13,7 +13,7 @@ export function createBidForm(highestBidAmount, listingId, container) {
   bidInput.classList.add("form-control", "me-2");
 
   const bidButton = document.createElement("button");
-  bidButton.textContent = "Place bid";
+  bidButton.textContent = "Bid";
   bidButton.classList.add("btn", "btn-primary");
 
   bidContainer.appendChild(bidInput);

@@ -3,12 +3,12 @@ import { createBidForm } from "./bidform.mjs";
 import { createBidHistory } from "./bidHistory.mjs";
 
 //Functionality to template out single listing
-
 export function listingTemplate(data) {
   const listingElements = {};
 
   // Media section (image)
   const mediaContainer = document.createElement("div");
+  mediaContainer.classList.add("media-container");
 
   const image = document.createElement("img");
   if (data.media && data.media.length > 0) {
@@ -19,10 +19,6 @@ export function listingTemplate(data) {
       "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
     image.alt = "No image available";
   }
-
-  image.style.objectFit = "cover";
-  image.style.width = "100%";
-  image.style.height = "100%";
 
   mediaContainer.appendChild(image);
   listingElements.image = mediaContainer;
@@ -51,7 +47,7 @@ export function listingTemplate(data) {
   // Display countdown until listing ends
   createCountdown(data.endsAt, infoContainer);
 
-  //Display bid form
+  // Display bid form
   createBidForm(highestBidAmount, data.id, infoContainer);
 
   const description = document.createElement("h5");
@@ -67,7 +63,44 @@ export function listingTemplate(data) {
 
   // Display bid history on listing
   const bidHistoryContainer = document.createElement("div");
-  createBidHistory(data.bids, bidHistoryContainer);
+
+  // Display headers
+  const bidHistoryTitle = document.createElement("h5");
+  bidHistoryTitle.textContent = "Bid history";
+  bidHistoryTitle.classList.add("text-primary");
+  bidHistoryContainer.appendChild(bidHistoryTitle);
+
+  const bidTitlesRow = document.createElement("div");
+  bidTitlesRow.classList.add("row", "font-weight-bold", "mb-2");
+
+  const nameTitle = document.createElement("div");
+  nameTitle.classList.add("col-4");
+  nameTitle.textContent = "Bidder's name";
+
+  const dateTitle = document.createElement("div");
+  dateTitle.classList.add("col-4");
+  dateTitle.textContent = "Bid placed";
+
+  const amountTitle = document.createElement("div");
+  amountTitle.classList.add("col-4");
+  amountTitle.textContent = "Amount";
+
+  bidTitlesRow.appendChild(nameTitle);
+  bidTitlesRow.appendChild(dateTitle);
+  bidTitlesRow.appendChild(amountTitle);
+  bidHistoryContainer.appendChild(bidTitlesRow);
+
+  // Check if there are any bids and display message if there are none
+  if (data.bids.length === 0) {
+    const noBidsMessage = document.createElement("p");
+    noBidsMessage.textContent = "No bids made on the listing yet.";
+    noBidsMessage.classList.add("text-muted");
+    bidHistoryContainer.appendChild(noBidsMessage);
+  } else {
+    // If there are bids, call createBidHistory function
+    createBidHistory(data.bids, bidHistoryContainer);
+  }
+
   listingElements.bidHistory = bidHistoryContainer;
 
   return listingElements;
