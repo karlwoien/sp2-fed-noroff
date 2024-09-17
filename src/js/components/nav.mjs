@@ -10,7 +10,7 @@ export function renderNavItems() {
   if (isLoggedIn()) {
     navItems.innerHTML = `
      <li class="nav-item">
-        <a class="nav-link" href="/index.html">Home</a>
+        <a class="nav-link" href="/index.html">Listings</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="/listing/add-new/index.html">Add listing</a>

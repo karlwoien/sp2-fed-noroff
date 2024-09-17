@@ -11,11 +11,11 @@ export async function renderUserBidHistory() {
 
   //Static elements at the top of the bid history section
   const header = document.createElement("p");
-  header.textContent = "Bid history";
+  header.textContent = "Your bid history";
   header.classList.add("text-primary", "fs-5", "mt-4");
 
   const tableHeaderRow = document.createElement("div");
-  tableHeaderRow.classList.add("row", "fs-5");
+  tableHeaderRow.classList.add("row", "mb-2");
 
   const titleHeader = document.createElement("div");
   titleHeader.textContent = "Title";

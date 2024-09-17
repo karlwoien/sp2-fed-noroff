@@ -4,6 +4,7 @@ import { loadProfile } from "./pages/user/profile.mjs";
 import { loadListings, loadListing } from "./pages/listings/listing.mjs";
 import { setAddListingFormListener } from "./handlers/listing.mjs";
 import { setSearchAndFilterListeners } from "./handlers/searchFilter.mjs";
+import { isLoggedIn } from "./api/auth/auth.mjs";
 
 export function router() {
   switch (window.location.pathname) {
@@ -11,6 +12,12 @@ export function router() {
     case "/index.html":
       loadListings("", "latest");
       setSearchAndFilterListeners();
+      if (isLoggedIn()) {
+        const heroSection = document.getElementById("hero-section");
+        if (heroSection) {
+          heroSection.style.display = "none";
+        }
+      }
       break;
     case "/profile/signup/":
     case "/profile/signup/index.html":
