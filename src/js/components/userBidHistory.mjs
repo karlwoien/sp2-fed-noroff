@@ -11,7 +11,7 @@ export async function renderUserBidHistory() {
 
   //Static elements at the top of the bid history section
   const header = document.createElement("p");
-  header.textContent = "Bid history";
+  header.textContent = "Your bid history";
   header.classList.add("text-primary", "fs-5", "mt-4");
 
   const tableHeaderRow = document.createElement("div");
