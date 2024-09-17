@@ -50,91 +50,99 @@
       </nav>
     </header>
     <!--Start of main-->
-    <div class="container">
-      <div class="row align-items-center">
-        <div
-          class="col-md-6 d-flex justify-content-center order-2 order-md-1 mb-md-0"
-        >
-          <div class="card rounded" style="width: 350px">
-            <form id="register-form">
-              <div class="mx-3 mb-3 form-group mt-4">
-                <label
-                  for="name"
-                  class="form-label"
-                  aria-label="Input for username"
-                  >Username</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  name="name"
-                  placeholder="Name"
-                />
-              </div>
-              <div class="mx-3 mb-3 form-group">
-                <label
-                  for="email"
-                  class="form-label"
-                  aria-label="Input for e-mail address"
-                  >Email</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  name="email"
-                  pattern="^[^\s@]+@(stud.noroff.no)$"
-                  required
-                  placeholder="name@stud.noroff.no"
-                />
-              </div>
-              <div class="mx-3 mb-3 form-group">
-                <label
-                  for="password"
-                  class="form-label"
-                  aria-label="Input for password"
-                  >Password:</label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  minlength="8"
-                  required
-                  placeholder="Password"
-                />
-              </div>
-              <div class="mx-3 mb-3 form-group">
-                <label
-                  for="avatar"
-                  class="form-label"
-                  aria-label="Input for avatar URL"
-                  >Avatar URL</label
-                >
-                <input
-                  type="url"
-                  class="form-control"
-                  name="avatar"
-                  placeholder=""
-                />
-              </div>
-              <div class="text-center mb-4">
-                <button type="submit" class="btn btn-primary">Sign up</button>
-              </div>
-            </form>
+    <main>
+      <div class="container">
+        <div class="row align-items-center">
+          <div
+            class="col-md-6 d-flex justify-content-center order-2 order-md-1 mb-md-0"
+          >
+            <div class="card rounded" style="width: 350px">
+              <form id="register-form">
+                <div class="mx-3 mb-3 form-group mt-4">
+                  <label
+                    for="name"
+                    class="form-label"
+                    aria-label="Input for username"
+                    >Username</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    name="name"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="mx-3 mb-3 form-group">
+                  <label
+                    for="email"
+                    class="form-label"
+                    aria-label="Input for e-mail address"
+                    >Email</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="email"
+                    pattern="^[^\s@]+@(stud.noroff.no)$"
+                    required
+                    placeholder="name@stud.noroff.no"
+                  />
+                </div>
+                <div class="mx-3 mb-3 form-group">
+                  <label
+                    for="password"
+                    class="form-label"
+                    aria-label="Input for password"
+                    >Password:</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    minlength="8"
+                    required
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="mx-3 mb-3 form-group">
+                  <label
+                    for="avatar"
+                    class="form-label"
+                    aria-label="Input for avatar URL"
+                    >Avatar URL</label
+                  >
+                  <input
+                    type="url"
+                    class="form-control"
+                    name="avatar"
+                    placeholder=""
+                  />
+                </div>
+                <div class="text-center mb-4">
+                  <button type="submit" class="btn btn-primary">Sign up</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-4 text-center order-md-2 mb-md-0">
+            <h1>
+              Join BidHaven Today <br />and Get 1000 Credit <br />Points for
+              Free!
+            </h1>
+            <p>Fill out the form and join the fun of bidding!</p>
+            <p>
+              Already a member?
+              <a href="/profile/login/index.html"
+                >Log in to your account here!</a
+              >
+            </p>
           </div>
         </div>
-        <div class="col-md-4 text-center order-md-2 mb-md-0">
-          <h1>
-            Join BidHaven Today <br />and Get 1000 Credit <br />Points for Free!
-          </h1>
-          <p>Fill out the form and join the fun of bidding!</p>
-          <p>
-            Already a member?
-            <a href="/profile/login/index.html">Log in to your account here!</a>
-          </p>
-        </div>
       </div>
-    </div>
+    </main>
+    <footer class="text-center">
+      <p>© BidHaven 2024</p>
+    </footer>
   </body>
 </html>

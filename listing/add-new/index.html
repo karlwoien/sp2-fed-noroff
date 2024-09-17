@@ -50,86 +50,91 @@
       </nav>
     </header>
     <!--Start of main-->
-    <div class="container mt-lg-4">
-      <div class="card rounded m-auto" style="max-width: 800px">
-        <form id="add-listing" class="m-5">
-          <h1 class="fs-5 text-center mb-4">Add new listing</h1>
-          <div class="mb-3 form-group">
-            <label for="title" class="form-label" aria-label="Input for title"
-              >Title</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              name="title"
-              placeholder=""
-              required
-            />
-          </div>
-          <div class="mb-3 form-group">
-            <label
-              for="description"
-              class="form-label"
-              aria-label="Input for description of product"
-              >Description</label
-            >
-            <textarea
-              type="text"
-              class="form-control"
-              id="description"
-              name="description"
-              placeholder=""
-            ></textarea>
-          </div>
-          <div class="mb-3 form-group">
-            <label
-              for="image"
-              class="form-label"
-              aria-label="Input for image url"
-              >Image</label
-            >
-            <input
-              type="url"
-              class="form-control"
-              id="image"
-              name="image"
-              placeholder=""
-            />
-          </div>
-          <div class="form-group pb-3">
-            <label
-              for="deadline"
-              class="form-label"
-              aria-label="Input for deadline date"
-              >Deadline date</label
-            >
-            <input
-              type="datetime-local"
-              class="form-control"
-              id="deadline"
-              name="endsAt"
-              placeholder=""
-              required
-            />
-          </div>
-          <hr />
-          <div class="text-center pt-3">
-            <h2 class="fs-5">Ready to publish?</h2>
-            <p>
-              When you click publish your listing goes live!<br />
-              The listing information will be displayed publicy.
-            </p>
-            <p class="pb-2">
-              You can view your published listings on your profile page.
-            </p>
-            <div class="mb-3">
-              <button type="submit" class="btn btn-primary">Publish</button>
+    <main>
+      <div class="container mt-lg-4">
+        <div class="card rounded m-auto" style="max-width: 800px">
+          <form id="add-listing" class="m-5">
+            <h1 class="fs-5 text-center mb-4">Add new listing</h1>
+            <div class="mb-3 form-group">
+              <label for="title" class="form-label" aria-label="Input for title"
+                >Title</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                placeholder=""
+                required
+              />
             </div>
-          </div>
-        </form>
-        <div id="form-message" class="alert d-none"></div>
+            <div class="mb-3 form-group">
+              <label
+                for="description"
+                class="form-label"
+                aria-label="Input for description of product"
+                >Description</label
+              >
+              <textarea
+                type="text"
+                class="form-control"
+                id="description"
+                name="description"
+                placeholder=""
+              ></textarea>
+            </div>
+            <div class="mb-3 form-group">
+              <label
+                for="image"
+                class="form-label"
+                aria-label="Input for image url"
+                >Image</label
+              >
+              <input
+                type="url"
+                class="form-control"
+                id="image"
+                name="image"
+                placeholder=""
+              />
+            </div>
+            <div class="form-group pb-3">
+              <label
+                for="deadline"
+                class="form-label"
+                aria-label="Input for deadline date"
+                >Deadline date</label
+              >
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="deadline"
+                name="endsAt"
+                placeholder=""
+                required
+              />
+            </div>
+            <hr />
+            <div class="text-center pt-3">
+              <h2 class="fs-5">Ready to publish?</h2>
+              <p>
+                When you click publish your listing goes live!<br />
+                The listing information will be displayed publicy.
+              </p>
+              <p class="pb-2">
+                You can view your published listings on your profile page.
+              </p>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Publish</button>
+              </div>
+            </div>
+          </form>
+          <div id="form-message" class="alert d-none"></div>
+        </div>
       </div>
-    </div>
+    </main>
+    <footer class="text-center">
+      <p>© BidHaven 2024</p>
+    </footer>
   </body>
 </html>

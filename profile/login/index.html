@@ -50,51 +50,56 @@
       </nav>
     </header>
     <!--Start of main-->
-    <div class="container">
-      <div class="col m-auto" style="width: 350px">
-        <div class="card mt-3">
-          <form id="login-form" class="m-4">
-            <h1 class="fs-5 text-center mb-4">Login to your account!</h1>
-            <div class="mb-3 form-group">
-              <label
-                for="email"
-                class="form-label"
-                aria-label="Input for e-mail address"
-                >Email</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                name="email"
-                pattern="^[^\s@]+@(stud.noroff.no)$"
-                required
-              />
-            </div>
-            <div class="mb-3 form-group">
-              <label
-                for="password"
-                class="form-label"
-                aria-label="Input for password"
-                >Password</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                name="password"
-                minlength="8"
-                required
-              />
-            </div>
-            <p class="text-center mb-4">
-              Not a member?
-              <a href="/profile/signup/index.html">Sign up here!</a>
-            </p>
-            <div class="text-center mb-3">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
+    <main>
+      <div class="container">
+        <div class="col m-auto" style="width: 350px">
+          <div class="card mt-3">
+            <form id="login-form" class="m-4">
+              <h1 class="fs-5 text-center mb-4">Login to your account!</h1>
+              <div class="mb-3 form-group">
+                <label
+                  for="email"
+                  class="form-label"
+                  aria-label="Input for e-mail address"
+                  >Email</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="email"
+                  pattern="^[^\s@]+@(stud.noroff.no)$"
+                  required
+                />
+              </div>
+              <div class="mb-3 form-group">
+                <label
+                  for="password"
+                  class="form-label"
+                  aria-label="Input for password"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  minlength="8"
+                  required
+                />
+              </div>
+              <p class="text-center mb-4">
+                Not a member?
+                <a href="/profile/signup/index.html">Sign up here!</a>
+              </p>
+              <div class="text-center mb-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
+    <footer class="text-center">
+      <p>© BidHaven 2024</p>
+    </footer>
   </body>
 </html>
