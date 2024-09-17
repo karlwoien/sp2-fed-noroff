@@ -43,7 +43,7 @@ export async function renderUserListings() {
 
     if (listings.length === 0) {
       const noListingsMessage = document.createElement("p");
-      noListingsMessage.textContent = "No listings found.";
+      noListingsMessage.textContent = "You have not added any listings yet.";
       listingsContainer.appendChild(noListingsMessage);
       return;
     }
