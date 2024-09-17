@@ -1,6 +1,7 @@
 import { createCountdown } from "./countdown.mjs";
 import { createBidForm } from "./bidform.mjs";
 import { createBidHistory } from "./bidHistory.mjs";
+import { isLoggedIn } from "../api/auth/auth.mjs";
 
 //Functionality to template out single listing
 export function listingTemplate(data) {
@@ -47,8 +48,17 @@ export function listingTemplate(data) {
   // Display countdown until listing ends
   createCountdown(data.endsAt, infoContainer);
 
-  // Display bid form
-  createBidForm(highestBidAmount, data.id, infoContainer);
+  // Check if the user is logged in
+  if (isLoggedIn()) {
+    // Display bid form
+    createBidForm(highestBidAmount, data.id, infoContainer);
+  } else {
+    // Display message if user is not logged in
+    const loginMessage = document.createElement("p");
+    loginMessage.innerHTML = "You must be logged in to place a bid.";
+    loginMessage.classList.add("text-danger");
+    infoContainer.appendChild(loginMessage);
+  }
 
   const description = document.createElement("h5");
   description.textContent = "Description";
