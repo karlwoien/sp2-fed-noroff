@@ -15,7 +15,7 @@ export async function renderUserBidHistory() {
   header.classList.add("text-primary", "fs-5", "mt-4");
 
   const tableHeaderRow = document.createElement("div");
-  tableHeaderRow.classList.add("row", "fs-5");
+  tableHeaderRow.classList.add("row", "mb-2");
 
   const titleHeader = document.createElement("div");
   titleHeader.textContent = "Title";
