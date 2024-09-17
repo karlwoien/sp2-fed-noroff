@@ -33,6 +33,12 @@ footer {
   @extend .shadow;
 }
 
+// Styling home page hero section
+
+#hero-section {
+  padding-bottom: 60px;
+}
+
 // Styling of profile containers and profile-image
 .profile-image {
   width: 190px;
