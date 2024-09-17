@@ -6,7 +6,7 @@ export function createBidHistory(bids, container) {
 
   sortedBids.forEach((bid) => {
     const bidRow = document.createElement("div");
-    bidRow.classList.add("row", "mb-3");
+    bidRow.classList.add("row", "mb-3", "border", "rounded");
 
     const bidderName = document.createElement("div");
     bidderName.classList.add("col-4");
