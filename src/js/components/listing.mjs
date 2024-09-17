@@ -16,7 +16,7 @@ export function listingTemplate(data) {
     image.alt = data.media[0].alt || "Listing image";
   } else {
     image.src =
-      "https://images.unsplash.com/photo-1589287707312-213624549c88?q=80&w=1074&auto=format&fit=crop";
+      "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
     image.alt = "No image available";
   }
 
