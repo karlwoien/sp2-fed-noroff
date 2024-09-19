@@ -9,8 +9,8 @@ const USER_QUERY = "?_seller=true&_bids=true";
  * Fetches all listings, with optional filters for search query and sort order.
  *
  * @param {string} query - Search query to filter listings by title or description.
- * @param {string} filter - Sorting filter.
- * @returns {Array} - A list of active listings based on the applied filters.
+ * @param {string} filter - Sorting filter, either latest or end soon.
+ * @returns {Array} - A list of listings based on the applied filters.
  */
 export async function getListings(query = "", filter = "latest") {
   let getListingsURL;
@@ -22,20 +22,24 @@ export async function getListings(query = "", filter = "latest") {
 
   const params = new URLSearchParams();
 
+  // Conditionally append active listings filter if filter is "endSoon"
+  if (filter === "endSoon") {
+    params.append("_active", "true");
+  }
+
   // Append sorting options based on the filter
   switch (filter) {
     case "endSoon":
-      params.append("_sort", "endsAt:asc");
-      break;
-    case "popular":
-      params.append("_sort", "_count.bids:desc");
+      params.append("sort", "endsAt");
+      params.append("sortOrder", "asc");
       break;
     default:
-      params.append("_sort", "created:desc"); // Default is "latest"
+      params.append("sort", "created");
+      params.append("sortOrder", "desc");
       break;
   }
 
-  // Add sorting parameters to the URL
+  // Add query parameters to the URL
   if (params.toString()) {
     getListingsURL += getListingsURL.includes("?")
       ? `&${params.toString()}`
@@ -49,31 +53,8 @@ export async function getListings(query = "", filter = "latest") {
     }
 
     const { data } = await response.json();
-    const now = new Date();
-
-    // Filter for active listings (listings that have not ended)
-    const activeListings = data.filter(
-      (listing) => new Date(listing.endsAt) > now,
-    );
-
-    // Sort listings based on the applied filter
-    switch (filter) {
-      case "endSoon":
-        activeListings.sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
-        break;
-      case "popular":
-        activeListings.sort((a, b) => b._count.bids - a._count.bids);
-        break;
-      default:
-        activeListings.sort(
-          (a, b) => new Date(b.created) - new Date(a.created),
-        ); // Sort by latest
-        break;
-    }
-
-    return activeListings;
+    return data;
   } catch (error) {
-    console.error("Error fetching listings:", error);
     throw new Error(error.message);
   }
 }
@@ -101,7 +82,6 @@ export async function getListing(id) {
       throw new Error(`Error fetching listing: ${response.statusText}`);
     }
   } catch (error) {
-    console.error("Error fetching listing:", error);
     throw new Error(error);
   }
 }
