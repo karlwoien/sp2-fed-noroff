@@ -1,7 +1,7 @@
 import { API_BASE, API_AUCTION } from "../constants.mjs";
 import { authFetch } from "../fetch.mjs";
 
-// Function to fetch a single listing with bid details
+// Fetches a single auction listing along with its bid details.
 export async function getSingleListingWithBids(id) {
   const url = `${API_BASE}${API_AUCTION}/listings/${id}?_bids=true`;
 

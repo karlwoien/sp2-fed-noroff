@@ -5,11 +5,6 @@ import { renderListing } from "../../components/listing.mjs";
 export async function loadListings(query = "", filter = "") {
   const listings = await getListings(query, filter);
 
-  if (!listings || listings.length === 0) {
-    console.warn("No listings found or an error occurred.");
-    return;
-  }
-
   const container = document.getElementById("listings");
   container.innerHTML = "";
   container.classList.add("row");

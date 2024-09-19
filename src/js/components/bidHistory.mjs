@@ -1,4 +1,4 @@
-// Function to template bid history with data from API
+// Function to template bid history
 
 export function createBidHistory(bids, container) {
   // Sort bids latest bids first
@@ -6,7 +6,7 @@ export function createBidHistory(bids, container) {
 
   sortedBids.forEach((bid) => {
     const bidRow = document.createElement("div");
-    bidRow.classList.add("row", "mb-3", "border", "rounded");
+    bidRow.classList.add("row", "mb-3", "border", "rounded", "p-2");
 
     const bidderName = document.createElement("div");
     bidderName.classList.add("col-4");

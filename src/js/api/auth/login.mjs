@@ -1,9 +1,18 @@
-import { API_BASE } from "../constants.mjs";
-import { API_AUTH } from "../constants.mjs";
-import { API_LOGIN } from "../constants.mjs";
+import { API_BASE, API_AUTH, API_LOGIN } from "../constants.mjs";
 import { save } from "../../storage/index.mjs";
 
 const method = "post";
+
+/**
+ * Logs in the user by sending their credentials email and password
+ * to the authentication API endpoint. If successful, it stores the access
+ * token and profile in local storage.
+ *
+ * @param {string} email - User's email address.
+ * @param {string} password - User's password.
+ * @returns {object} profile - The user's profile information.
+ * @throws Will throw an error if the login request fails.
+ */
 
 export async function login(email, password) {
   const response = await fetch(API_BASE + API_AUTH + API_LOGIN, {
@@ -21,5 +30,5 @@ export async function login(email, password) {
     return profile;
   }
 
-  throw new Error("Could not login account");
+  throw new Error(`Login failed: ${response.status} ${response.statusText}`);
 }

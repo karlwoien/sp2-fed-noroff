@@ -1,11 +1,10 @@
 import { getProfile } from "../api/profile/get.mjs";
 import { changeAvatarModal } from "../handlers/changeAvatar.mjs";
 
-//Template for profile info on the profile page. Username, avatar, and overview of numbers of credit, listings and wins
-
 // Extract the name parameter from the URL query string
 const profileName = new URLSearchParams(window.location.search).get("name");
 
+//Fetches and displays the user's profile info, including username, avatar, and an overview of credits, listings, and wins.
 export async function profileInfo() {
   const user = await getProfile(profileName);
 
@@ -28,7 +27,6 @@ export async function profileInfo() {
   const changeAvatarButton = await changeAvatarModal();
 
   //Section for overview of credits, listings, wins
-
   const overviewContainer = document.createElement("div");
   overviewContainer.classList.add("mt-5");
 

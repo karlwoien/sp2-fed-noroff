@@ -8,10 +8,8 @@ export async function loadProfile() {
 
   // Load the profile info
   profileContainer.appendChild(await profileInfo());
-
   // Load the users listings
   await renderUserListings();
-
   // Load the users bid history
   await renderUserBidHistory();
 }

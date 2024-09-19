@@ -1,7 +1,6 @@
 import { getUserListings } from "../api/profile/getUserListings.mjs";
 
-//Functionality to render listings added by the user
-
+//Renders the listings added by the user.
 export async function renderUserListings() {
   const listingsContainer = document.getElementById("user-listings");
 
