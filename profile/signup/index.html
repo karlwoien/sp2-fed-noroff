@@ -76,9 +76,11 @@
                     placeholder="Name"
                     required
                     minlength="3"
+                    pattern="^[A-Za-z0-9_]+$"
                   />
                   <div class="invalid-feedback">
-                    Username must be at least 3 characters.
+                    Username must be at least 3 characters and can only contain
+                    letters, numbers, and underscores.
                   </div>
                 </div>
                 <div class="mx-3 mb-3 form-group">
@@ -93,7 +95,7 @@
                     class="form-control"
                     name="email"
                     id="email"
-                    pattern="^[^\s@]+@(stud.noroff.no)$"
+                    pattern="^[^\s@]+@stud\.noroff\.no$$"
                     required
                     placeholder="name@stud.noroff.no"
                   />
@@ -113,13 +115,12 @@
                     class="form-control"
                     name="password"
                     id="password"
-                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                    pattern="^.{8,}"
                     required
                     placeholder="Password"
                   />
                   <div class="invalid-feedback">
-                    Password must be at least 8 characters and include a letter
-                    and a number.
+                    Password must be at least 8 characters long.
                   </div>
                 </div>
                 <div class="text-center mb-4">
