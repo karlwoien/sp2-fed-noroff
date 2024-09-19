@@ -1,7 +1,6 @@
 import { loadListings } from "../pages/listings/listing.mjs";
 
-// Event listener for search and filter of listings
-
+// Sets up event listeners for search input and filter select
 export function setSearchAndFilterListeners() {
   const searchInput = document.getElementById("searchInput");
   const filterSelect = document.getElementById("filter");

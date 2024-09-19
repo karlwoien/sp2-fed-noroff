@@ -1,7 +1,7 @@
 import { authFetch } from "../api/fetch.mjs";
 import { API_BASE, API_AUCTION } from "../api/constants.mjs";
 
-// Creates the bid form and handles bid submission when on a single listing
+// Creates the bid form and handles bid submission when on a single listing page
 export function createBidForm(highestBidAmount, listingId, container) {
   const bidContainer = document.createElement("div");
   bidContainer.classList.add("d-flex", "align-items-center", "mb-3");
@@ -20,7 +20,7 @@ export function createBidForm(highestBidAmount, listingId, container) {
   bidContainer.appendChild(bidButton);
   container.appendChild(bidContainer);
 
-  // Handle bid submission
+  // Handles bid submission and ensures the bid is valid and higher than the current highest bid
   bidButton.addEventListener("click", async () => {
     const bidAmount = parseFloat(bidInput.value);
 

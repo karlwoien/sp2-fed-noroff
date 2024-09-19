@@ -1,7 +1,6 @@
 import { isLoggedIn } from "../api/auth/auth.mjs";
 
 // Function to render nav items based on if the user is logged in or not
-
 export function renderNavItems() {
   const navItems = document.getElementById("nav-items");
   navItems.classList.add("flex-end");

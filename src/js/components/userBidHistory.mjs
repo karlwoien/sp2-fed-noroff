@@ -2,8 +2,7 @@ import { getListings } from "../api/listing/get.mjs";
 import { getSingleListingWithBids } from "../api/profile/getUserBids.mjs";
 import { load } from "../storage/index.mjs";
 
-// Functionality to render users bid history on the users profile page
-
+// Renders the user's bid history on the profile page.
 export async function renderUserBidHistory() {
   const bidHistoryContainer = document.getElementById("user-bid-history");
 

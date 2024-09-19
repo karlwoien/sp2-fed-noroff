@@ -1,90 +1,96 @@
 import { API_BASE, API_AUCTION } from "../constants.mjs";
 import { authFetch } from "../fetch.mjs";
 
-const action = "/listings";
+const LISTINGS_PATH = "/listings";
+const SEARCH_PATH = "/listings/search";
+const USER_QUERY = "?_seller=true&_bids=true";
 
-// Function to get all listings, or filter by search or sort order
+/**
+ * Fetches all listings, with optional filters for search query and sort order.
+ *
+ * @param {string} query - Search query to filter listings by title or description.
+ * @param {string} filter - Sorting filter.
+ * @returns {Array} - A list of active listings based on the applied filters.
+ */
 export async function getListings(query = "", filter = "latest") {
   let getListingsURL;
 
-  // Use the search endpoint if a search query is provided
-  if (query) {
-    getListingsURL = `${API_BASE}${API_AUCTION}/listings/search?q=${encodeURIComponent(query)}`;
-  } else {
-    // Use the regular endpoint if there's no search query
-    getListingsURL = `${API_BASE}${API_AUCTION}/listings`;
-  }
+  // Use the search endpoint if a search query is provided, otherwise use the regular listings endpoint
+  getListingsURL = query
+    ? `${API_BASE}${API_AUCTION}${SEARCH_PATH}?q=${encodeURIComponent(query)}`
+    : `${API_BASE}${API_AUCTION}${LISTINGS_PATH}`;
 
   const params = new URLSearchParams();
 
-  // Add sorting options based on filter
-  if (filter === "latest") {
-    params.append("_sort", "created:desc");
-  } else if (filter === "endSoon") {
-    params.append("_sort", "endsAt:asc");
-  } else if (filter === "popular") {
-    params.append("_sort", "_count.bids:desc");
+  // Append sorting options based on the filter
+  switch (filter) {
+    case "endSoon":
+      params.append("_sort", "endsAt:asc");
+      break;
+    case "popular":
+      params.append("_sort", "_count.bids:desc");
+      break;
+    default:
+      params.append("_sort", "created:desc"); // Default is "latest"
+      break;
   }
 
-  // Append the query parameters for sorting
+  // Add sorting parameters to the URL
   if (params.toString()) {
-    if (getListingsURL.includes("?")) {
-      getListingsURL += `&${params.toString()}`;
-    } else {
-      getListingsURL += `?${params.toString()}`;
-    }
+    getListingsURL += getListingsURL.includes("?")
+      ? `&${params.toString()}`
+      : `?${params.toString()}`;
   }
 
   try {
     const response = await authFetch(getListingsURL);
-    if (response.ok) {
-      const { data } = await response.json();
-
-      const now = new Date();
-
-      if (filter === "latest") {
-        // Manually sort by created date
-        const sortedListings = data.sort(
-          (a, b) => new Date(b.created) - new Date(a.created),
-        );
-
-        // Now filter for active listings after sorting
-        const activeListings = sortedListings.filter(
-          (listing) => new Date(listing.endsAt) > now,
-        );
-        return activeListings;
-      }
-
-      // Filter for active listings that haven't ended yet
-      const activeListings = data.filter(
-        (listing) => new Date(listing.endsAt) > now,
-      );
-
-      // Apply client-side sorting for ending soon and popular
-      if (filter === "endSoon") {
-        activeListings.sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
-      } else if (filter === "popular") {
-        activeListings.sort((a, b) => b._count.bids - a._count.bids);
-      }
-
-      return activeListings;
-    } else {
-      console.error("Error fetching listings:", response.status);
+    if (!response.ok) {
+      throw new Error(`Error fetching listings: ${response.statusText}`);
     }
+
+    const { data } = await response.json();
+    const now = new Date();
+
+    // Filter for active listings (listings that have not ended)
+    const activeListings = data.filter(
+      (listing) => new Date(listing.endsAt) > now,
+    );
+
+    // Sort listings based on the applied filter
+    switch (filter) {
+      case "endSoon":
+        activeListings.sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
+        break;
+      case "popular":
+        activeListings.sort((a, b) => b._count.bids - a._count.bids);
+        break;
+      default:
+        activeListings.sort(
+          (a, b) => new Date(b.created) - new Date(a.created),
+        ); // Sort by latest
+        break;
+    }
+
+    return activeListings;
   } catch (error) {
     console.error("Error fetching listings:", error);
+    throw new Error(error.message);
   }
 }
 
-// Functionality to get single listing by id
-const user = "?_seller=true&_bids=true";
-
+/**
+ * Fetches a single listing by its ID, including seller and bids information.
+ *
+ * @param {string} id - The ID of the listing to retrieve.
+ * @returns {object} - The data of the specific listing, including seller and bids.
+ * @throws Will throw an error if the listing ID is not provided or if the request fails.
+ */
 export async function getListing(id) {
   if (!id) {
     throw new Error("Get listing requires a listing ID");
   }
 
-  const getListingURL = `${API_BASE}${API_AUCTION}${action}/${id}${user}`;
+  const getListingURL = `${API_BASE}${API_AUCTION}${LISTINGS_PATH}/${id}${USER_QUERY}`;
 
   try {
     const response = await authFetch(getListingURL);

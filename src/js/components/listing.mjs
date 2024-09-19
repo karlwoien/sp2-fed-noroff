@@ -3,18 +3,15 @@ import { createBidForm } from "./bidform.mjs";
 import { createBidHistory } from "./bidHistory.mjs";
 import { isLoggedIn } from "../api/auth/auth.mjs";
 
-//Functionality to template out single listing
-export function listingTemplate(data) {
-  const listingElements = {};
-
-  // Media section (image)
+//Creates and returns the media section for the listing.
+function createMediaSection(media) {
   const mediaContainer = document.createElement("div");
   mediaContainer.classList.add("media-container");
 
   const image = document.createElement("img");
-  if (data.media && data.media.length > 0) {
-    image.src = data.media[0].url;
-    image.alt = data.media[0].alt || "Listing image";
+  if (media && media.length > 0) {
+    image.src = media[0].url;
+    image.alt = media[0].alt || "Listing image";
   } else {
     image.src =
       "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
@@ -22,59 +19,60 @@ export function listingTemplate(data) {
   }
 
   mediaContainer.appendChild(image);
-  listingElements.image = mediaContainer;
+  return mediaContainer;
+}
 
-  // Info section (title, description, highest bid, seller info)
+// Creates the info section including title, seller info, highest bid, and description.
+function createInfoSection(data, highestBidAmount) {
+  const { title, seller, description, endsAt, id } = data;
   const infoContainer = document.createElement("div");
 
-  const title = document.createElement("h5");
-  title.textContent = data.title;
-  title.classList.add("text-primary");
-  infoContainer.appendChild(title);
+  // Title
+  const titleElement = document.createElement("h5");
+  titleElement.textContent = title;
+  titleElement.classList.add("text-primary");
+  infoContainer.appendChild(titleElement);
 
-  const seller = document.createElement("p");
-  seller.textContent = `Listed by: ${data.seller ? data.seller.name : "Unknown"}`;
-  infoContainer.appendChild(seller);
+  // Seller info
+  const sellerElement = document.createElement("p");
+  sellerElement.textContent = `Listed by: ${seller ? seller.name : "Unknown"}`;
+  infoContainer.appendChild(sellerElement);
 
-  // Find the highest bid from the bids array
-  const highestBidAmount =
-    data.bids.length > 0 ? Math.max(...data.bids.map((bid) => bid.amount)) : 0;
-
-  // Display the highest bid
+  // Highest bid
   const highestBid = document.createElement("p");
   highestBid.textContent = `Highest bid: $${highestBidAmount}`;
   infoContainer.appendChild(highestBid);
 
-  // Display countdown until listing ends
-  createCountdown(data.endsAt, infoContainer);
+  // Countdown
+  createCountdown(endsAt, infoContainer);
 
-  // Check if the user is logged in
+  // Bid form or login message
   if (isLoggedIn()) {
-    // Display bid form
-    createBidForm(highestBidAmount, data.id, infoContainer);
+    createBidForm(highestBidAmount, id, infoContainer);
   } else {
-    // Display message if user is not logged in
     const loginMessage = document.createElement("p");
     loginMessage.innerHTML = "You must be logged in to place a bid.";
     loginMessage.classList.add("text-danger");
     infoContainer.appendChild(loginMessage);
   }
 
-  const description = document.createElement("h5");
-  description.textContent = "Description";
-  description.classList.add("text-primary");
-  infoContainer.appendChild(description);
+  // Description
+  const descriptionTitle = document.createElement("h5");
+  descriptionTitle.textContent = "Description";
+  descriptionTitle.classList.add("text-primary");
+  infoContainer.appendChild(descriptionTitle);
 
   const descriptionText = document.createElement("p");
-  descriptionText.textContent = data.description;
+  descriptionText.textContent = description;
   infoContainer.appendChild(descriptionText);
 
-  listingElements.infoContainer = infoContainer;
+  return infoContainer;
+}
 
-  // Display bid history on listing
+//Creates the bid history section for the listing.
+function createBidHistorySection(bids) {
   const bidHistoryContainer = document.createElement("div");
 
-  // Display headers
   const bidHistoryTitle = document.createElement("h5");
   bidHistoryTitle.textContent = "Bid history";
   bidHistoryTitle.classList.add("text-primary");
@@ -100,22 +98,33 @@ export function listingTemplate(data) {
   bidTitlesRow.appendChild(amountTitle);
   bidHistoryContainer.appendChild(bidTitlesRow);
 
-  // Check if there are any bids and display message if there are none
-  if (data.bids.length === 0) {
+  if (bids.length === 0) {
     const noBidsMessage = document.createElement("p");
     noBidsMessage.textContent = "No bids made on the listing yet.";
     noBidsMessage.classList.add("text-muted");
     bidHistoryContainer.appendChild(noBidsMessage);
   } else {
-    // If there are bids, call createBidHistory function
-    createBidHistory(data.bids, bidHistoryContainer);
+    createBidHistory(bids, bidHistoryContainer);
   }
 
-  listingElements.bidHistory = bidHistoryContainer;
-
-  return listingElements;
+  return bidHistoryContainer;
 }
 
+// Generates the complete template for a single listing.
+export function listingTemplate(data) {
+  const { bids } = data;
+
+  const highestBidAmount =
+    bids.length > 0 ? Math.max(...bids.map((bid) => bid.amount)) : 0;
+
+  return {
+    image: createMediaSection(data.media),
+    infoContainer: createInfoSection(data, highestBidAmount),
+    bidHistory: createBidHistorySection(bids),
+  };
+}
+
+//Renders the listing onto the page by appending the appropriate elements to the DOM.
 export function renderListing(data) {
   if (!data) {
     console.error("No listing data available to render.");
@@ -124,27 +133,21 @@ export function renderListing(data) {
 
   const listingElements = listingTemplate(data);
 
-  // Append the image to the media container
+  // Media
   const mediaContainer = document.getElementById("listing-media");
   if (mediaContainer) {
     mediaContainer.appendChild(listingElements.image);
-  } else {
-    console.error("Media container not found");
   }
 
-  // Append listing info (title, description, etc.) to the info container
+  // Info
   const infoContainer = document.getElementById("listing-info");
   if (infoContainer) {
     infoContainer.appendChild(listingElements.infoContainer);
-  } else {
-    console.error("Info container not found");
   }
 
-  // Append bid history to the bid history container
+  // Bid history
   const bidHistoryContainer = document.getElementById("bid-history");
   if (bidHistoryContainer) {
     bidHistoryContainer.appendChild(listingElements.bidHistory);
-  } else {
-    console.error("Bid history container not found");
   }
 }

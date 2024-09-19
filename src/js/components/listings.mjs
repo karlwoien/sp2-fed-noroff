@@ -1,15 +1,14 @@
 import { createCountdown } from "./countdown.mjs";
 
-//Functionality to template out listings on home page
-
-export function listingsTemplate(data) {
+//Creates a single listing card element for the homepage.
+function createListingCard(data) {
   // Main div element for each card
   const listingContainer = document.createElement("div");
   listingContainer.classList.add("col-lg-4", "col-md-6", "col-sm-12", "mb-4");
 
   // Create anchor tag to wrap the card and make it clickable
   const link = document.createElement("a");
-  link.href = `/listing/index.html?id=${data.id}`; // Redirect to single listing page with the listing ID
+  link.href = `/listing/index.html?id=${data.id || ""}`; // Ensure there is an ID for the listing
 
   // Card element
   const card = document.createElement("div");
@@ -18,14 +17,15 @@ export function listingsTemplate(data) {
   // Image element
   const image = document.createElement("img");
   image.classList.add("card-img-top");
-  if (data.media && data.media.length > 0) {
-    image.src = data.media[0].url;
-    image.alt = data.media[0].alt || "Listing image";
-  } else {
-    image.src =
-      "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"; // Fallback image
-    image.alt = "No image available";
-  }
+  image.src =
+    data.media && data.media.length > 0
+      ? data.media[0].url
+      : "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"; // Fallback image
+
+  image.alt =
+    data.media && data.media.length > 0
+      ? data.media[0].alt || "Listing image"
+      : "No image available";
 
   // Card body
   const cardBody = document.createElement("div");
@@ -34,7 +34,7 @@ export function listingsTemplate(data) {
   // Title element
   const title = document.createElement("h5");
   title.classList.add("card-title");
-  title.textContent = data.title;
+  title.textContent = data.title || "Untitled listing"; // Handle missing title
 
   // Display countdown until listing ends
   const countdown = document.createElement("div");
@@ -55,7 +55,24 @@ export function listingsTemplate(data) {
   return listingContainer;
 }
 
+//Renders the list of listings on the homepage by appending them to the parent container.
 export function renderListings(listingsDataList, parent) {
-  const listingsHTML = listingsDataList.map(listingsTemplate);
-  parent.append(...listingsHTML);
+  parent.innerHTML = "";
+
+  if (!listingsDataList || listingsDataList.length === 0) {
+    const errorMessage = document.createElement("p");
+    errorMessage.textContent =
+      "No listings are currently available. Please check back later.";
+    errorMessage.classList.add("text-muted", "text-center");
+    parent.appendChild(errorMessage);
+    return;
+  }
+  const fragment = document.createDocumentFragment();
+
+  listingsDataList.forEach((listingData) => {
+    const listingCard = createListingCard(listingData);
+    fragment.appendChild(listingCard);
+  });
+
+  parent.appendChild(fragment);
 }
