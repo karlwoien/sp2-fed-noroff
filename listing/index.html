@@ -60,11 +60,19 @@
           <div class="col-md">
             <div class="card rounded">
               <div class="media-container" id="listing-media">
+                <div
+                  id="loading-spinner"
+                  class="text-center text-primary my-4"
+                  style="display: none"
+                >
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
                 <!-- Dynamically insert image here -->
               </div>
             </div>
           </div>
-
           <!-- Card for listing info -->
           <div class="col-md">
             <div class="card rounded">
@@ -74,7 +82,7 @@
             </div>
           </div>
         </div>
-
+        <!-- Card for listing bid history-->
         <div class="row mt-3">
           <div class="col-md-12">
             <div class="card rounded">

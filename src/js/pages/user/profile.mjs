@@ -1,8 +1,13 @@
 import { profileInfo } from "../../components/profileInfo.mjs";
 import { renderUserListings } from "../../components/userListings.mjs";
 import { renderUserBidHistory } from "../../components/userBidHistory.mjs";
+import {
+  showSpinner,
+  hideSpinner,
+} from "../../components/loadingIndicator.mjs";
 
 export async function loadProfile() {
+  showSpinner();
   const profileContainer = document.querySelector("#profile-info");
   profileContainer.innerHTML = "";
 
@@ -12,4 +17,5 @@ export async function loadProfile() {
   await renderUserListings();
   // Load the users bid history
   await renderUserBidHistory();
+  hideSpinner();
 }
