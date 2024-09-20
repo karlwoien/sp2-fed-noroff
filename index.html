@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BidHaven | Home</title>
+    <meta
+      name="description"
+      content="Welcome to BidHaven! Your online auctions house where you can bid on anything."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <script
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script type="module" src="/src/js/index.mjs" defer></script>
+  </head>
+  <body>
+    <!--Start of header-->
+    <header>
+      <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">
+            <img
+              src="/src/assets/logo/bidhaven-logo.png"
+              alt="BidHaven Logo"
+              class="d-inline-block align-text-top img-fluid"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="nav-items">
+              <!-- Nav items should be dynamic inserted here -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!--Start of main-->
+    <main>
+      <div id="hero-section">
+        <div class="container text-center">
+          <h1 class="text-primary" style="font-size: 48px">
+            Join BidHaven Today <br />
+            and Get 1000 Credit <br />
+            Points for Free!
+          </h1>
+          <p>
+            Unlock your auction journey and discover treasures waiting to be
+            won!
+          </p>
+          <a
+            role="button"
+            class="btn btn-primary"
+            href="/profile/signup/index.html"
+            >Join here</a
+          >
+        </div>
+      </div>
+      <div class="listing-section">
+        <div class="container">
+          <h1 class="text-center">Explore listings</h1>
+          <div class="filter-listings">
+            <nav class="navbar row rounded pt-3 pb-3 mb-2">
+              <form class="col justify-content-end" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search listings"
+                  aria-label="Search through listings"
+                  name="searchInput"
+                  id="searchInput"
+                />
+              </form>
+              <div class="col-4">
+                <select
+                  class="form-select"
+                  aria-label="Sort listings"
+                  name="filter"
+                  id="filter"
+                >
+                  <option value="latest" selected>Latest</option>
+                  <option value="endSoon">Ending Soon</option>
+                </select>
+              </div>
+            </nav>
+          </div>
+          <div id="listings">
+            <div
+              id="loading-spinner"
+              class="text-center text-primary my-4"
+              style="display: none"
+            >
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <!--Listing items dynamic inserted here-->
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="text-center">
+      <p>© BidHaven 2024</p>
+    </footer>
+  </body>
+</html>

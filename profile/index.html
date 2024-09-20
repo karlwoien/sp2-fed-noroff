@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BidHaven |Profile</title>
+    <meta
+      name="description"
+      content="This is your profile. Here you can check your credits, active listings, update your avatar and more"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <script
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script type="module" src="/src/js/index.mjs" defer></script>
+  </head>
+  <body>
+    <!--Start of header-->
+    <header>
+      <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">
+            <img
+              src="/src/assets/logo/bidhaven-logo.png"
+              alt="BidHaven Logo"
+              class="d-inline-block align-text-top img-fluid"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="nav-items">
+              <!-- Nav items should be dynamic inserted here -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!--Start of main-->
+    <main>
+      <div class="container m-auto mt-4">
+        <div class="row row-gap-3">
+          <div class="card col-md-4 rounded me-3">
+            <div class="m-3 mx-auto" id="profile-info">
+              <!--Dynamically insert info here-->
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="row row-gap-3">
+              <div class="card rounded">
+                <div class="m-3" id="user-listings">
+                  <!--Dynamically insert info here-->
+                </div>
+              </div>
+              <div class="card rounded">
+                <div class="m-3" id="user-bid-history">
+                  <div class="media-container" id="listing-media">
+                    <div
+                      id="loading-spinner"
+                      class="text-center text-primary my-4"
+                      style="display: none"
+                    >
+                      <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                    <!--Dynamically insert info here-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="text-center">
+      <p>© BidHaven 2024</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+/* Custom css*/
+//Global styles
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  flex-grow: 1;
+  padding-top: 60px;
+}
+
+footer {
+  padding-top: 60px;
+}
+
+.navbar-toggler {
+  .navbar-toggler-icon {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.card {
+  @extend .shadow;
+}
+
+// Hero Section
+#hero-section {
+  padding-bottom: 60px;
+}
+
+// Profile containers
+.profile-image {
+  width: 190px;
+  height: 190px;
+  display: block;
+  margin: 0 auto;
+}
+
+#bid-history,
+#user-listings,
+#user-bid-history {
+  max-height: 283px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+// Listings card
+.listing-card {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .card-img-top {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+// Single listing containers
+.media-container,
+.info-container {
+  height: 400px;
+  overflow: hidden;
+}
+
+.media-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+  display: block;
+  border-radius: 4px;
+}
+
+// scss-docs-start import-stack
+// Configuration
+@import "../../node_modules/bootstrap/scss/functions";
+@import "variables";
+@import "variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BidHaven |Sign up</title>
+    <meta
+      name="description"
+      content="Welcome to BidHaven! Please login to embark on the fun of bidding."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <script
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script type="module" src="/src/js/index.mjs" defer></script>
+  </head>
+  <body>
+    <!--Start of header-->
+    <header>
+      <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">
+            <img
+              src="/src/assets/logo/bidhaven-logo.png"
+              alt="BidHaven Logo"
+              class="d-inline-block align-text-top img-fluid"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="nav-items">
+              <!-- Nav items should be dynamic inserted here -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!--Start of main-->
+    <main>
+      <div class="container">
+        <div class="col m-auto" style="width: 350px">
+          <div class="card mt-3">
+            <form id="login-form" class="m-4" novalidate>
+              <h1 class="fs-5 text-center mb-4">Login to your account!</h1>
+              <div class="mb-3 form-group">
+                <label
+                  for="email"
+                  class="form-label"
+                  aria-label="Input for e-mail address"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  pattern="^[^\s@]+@(stud.noroff.no)$"
+                  required
+                  placeholder="name@stud.noroff.no"
+                />
+                <div class="invalid-feedback">
+                  Please use a valid @stud.noroff.no email address.
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <label
+                  for="password"
+                  class="form-label"
+                  aria-label="Input for password"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  id="password"
+                  minlength="8"
+                  required
+                  placeholder="Password"
+                />
+                <div class="invalid-feedback">
+                  Password must be at least 8 characters long.
+                </div>
+              </div>
+              <p class="text-center mb-4">
+                Not a member?
+                <a href="/profile/signup/index.html">Sign up here!</a>
+              </p>
+              <div class="text-center mb-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+              <div id="error-message" class="alert alert-danger d-none"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="text-center">
+      <p>© BidHaven 2024</p>
+    </footer>
+  </body>
+</html>
