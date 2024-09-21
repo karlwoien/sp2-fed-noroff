@@ -10,8 +10,7 @@
     "start": "sass --watch src/scss:dist/css & live-server",
     "lint": "eslint src/**/*.mjs",
     "lint-fix": "eslint src/**/*.mjs --cache --fix",
-    "prepare": "husky install",
-    "bootstrap": "mkdir -p public/vendor/bootstrap && cp -r node_modules/bootstrap/dist/* public/vendor/bootstrap/"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
