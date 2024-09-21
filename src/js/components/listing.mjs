@@ -1,5 +1,5 @@
 import { createCountdown } from "./countdown.mjs";
-import { createBidForm } from "./bidform.mjs";
+import { createBidForm } from "../handlers/bidForm.mjs";
 import { createBidHistory } from "./bidHistory.mjs";
 import { isLoggedIn } from "../api/auth/auth.mjs";
 

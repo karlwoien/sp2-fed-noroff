@@ -1,8 +1,8 @@
-import { setRegisterListener } from "./handlers/register.mjs";
-import { setLoginListener } from "./handlers/login.mjs";
+import { setRegisterListener } from "./handlers/registerForm.mjs";
+import { setLoginListener } from "./handlers/loginForm.mjs";
 import { loadProfile } from "./pages/user/profile.mjs";
 import { loadListings, loadListing } from "./pages/listings/listing.mjs";
-import { setAddListingFormListener } from "./handlers/listing.mjs";
+import { setAddListingFormListener } from "./handlers/addListingForm.mjs";
 import { setSearchAndFilterListeners } from "./handlers/searchFilter.mjs";
 import { isLoggedIn } from "./api/auth/auth.mjs";
 
