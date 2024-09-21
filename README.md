@@ -1,5 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1ab7db7f-66f9-4387-a542-3fc9af540ad8/deploy-status)](https://app.netlify.com/sites/bidhaven/deploys)
 # Semester Project 2
+![screencapture-image-readme](https://github.com/user-attachments/assets/6a462066-e917-46e6-ac48-8b3275a2ef5b)
 
 This is a Noroff school project, developed to demonstrate the skills I've acquired over the past three semesters by building an auction website.
 
