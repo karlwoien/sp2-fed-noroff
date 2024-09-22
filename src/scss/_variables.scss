@@ -38,8 +38,7 @@ $grays: (
 // scss-docs-start color-variables
 $air-force-blue: #153289; //Main brand color
 $cultured: #f6f4f1; //Background color
-$space-cadet: #273150; //Text color
-$dark-metal: #181d2c; //Paragraph text
+$space-cadet: #273150; //Headings color
 $blue: #0d6efd !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
@@ -675,7 +674,7 @@ $headings-font-family: null !default;
 $headings-font-style: null !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;
-$headings-color: inherit !default;
+$headings-color: $space-cadet;
 // scss-docs-end headings-variables
 
 // scss-docs-start display-headings
