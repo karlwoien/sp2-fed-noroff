@@ -50,3 +50,6 @@ Run project locally:
 ```bash
 npm run start
 ```
+
+## Contributing
+This repository is not open for contributions as it is part of a school project. However, feel free to fork the project, leave feedback, or explore it to learn more.
