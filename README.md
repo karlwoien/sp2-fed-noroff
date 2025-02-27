@@ -8,7 +8,7 @@ This is a Noroff school project, developed to demonstrate the skills I've acquir
 
 BidHaven is a fictional auction website where users can list items for bidding and place bids on items listed by others. Upon joining the website, new users are awarded 1000 credits, which can be used to place bids. Users can also earn credits by selling items. Non-registered users can browse listings, but only registered users can place bids.
 
-Visit the live site hosted on Netlify: https://bidhaven.netlify.app/
+Visit the live site hosted on Netlify: [BidHaven](https://bidhaven.netlify.app/)
 
 ### Requirements / user stories
 - Users with a stud.noroff.no email can register
